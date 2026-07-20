@@ -4,6 +4,9 @@ Enterprise Healthcare Clinical Imaging Portal
 
 Created by Akash Pathak
 
-Version 1.1 (Security Patch)
+Version 1.2 
+Included Changes:
+- Security Patch
+- UI enhancement
 
 Feature-login brach testing

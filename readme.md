@@ -10,3 +10,7 @@ Included Changes:
 - UI enhancement
 
 Feature-login brach testing
+
+Upcoming Modules:
+- Patient Registration
+- Appointment Scheduling

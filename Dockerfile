@@ -1,7 +1,3 @@
-FROM ubuntu
+FROM nginx:alpine
 
-RUN mkdir /app
-
-COPY . /app/
-
-CMD ["bash"]
+COPY . /usr/share/nginx/html

@@ -1,154 +1,65 @@
-commit 959ec60510db341b4c69d3a8525e80bc3d5ee9b2
-Author: akashpathak-cloud <alagakash83@gmail.com>
-Date:   Tue Aug 4 14:04:02 2026 +0530
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eef4f8;
+}
 
-    Added radiologist dashboard page (#4)
+.dashboard {
+    width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
-diff --git a/style.css b/style.css
-index 563c6c3..d4322b6 100644
---- a/style.css
-+++ b/style.css
-@@ -1,110 +1,65 @@
- body {
-     margin: 0;
--    font-family: Arial, sans-serif;
--    background: #eef5f9;
--
--    display: flex;
--    justify-content: center;
--    align-items: center;
--
--    height: 100vh;
-+    font-family: Arial, Helvetica, sans-serif;
-+    background-color: #eef4f8;
- }
- 
--.login-container {
--
--    width: 380px;
--
-+.dashboard {
-+    width: 900px;
-+    margin: 40px auto;
-     background: white;
--
--    padding: 35px;
--
-+    padding: 30px;
-     border-radius: 10px;
--
--    box-shadow: 0 0 12px rgba(0,0,0,0.15);
--
-+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
- }
- 
- h1 {
--
-+    color: #1976d2;
-     text-align: center;
-+}
- 
--    color: #0d6efd;
--
--    margin-bottom: 5px;
--
-+h2 {
-+    color: #444;
-+    margin-top: 30px;
- }
- 
- h3 {
--
-     text-align: center;
--
--    color: gray;
--
--    margin-bottom: 30px;
--
-+    color: #666;
- }
- 
--label {
--
--    display: block;
--
--    margin-top: 15px;
--
--}
--
--input[type=text],
--input[type=password] {
--
-+table {
-     width: 100%;
--
--    padding: 10px;
--
--    margin-top: 5px;
--
--    box-sizing: border-box;
--
-+    border-collapse: collapse;
-+    margin-top: 20px;
- }
- 
--.options {
--
--    display: flex;
--
--    justify-content: space-between;
--
--    margin-top: 15px;
-+th {
-+    background-color: #1976d2;
-+    color: white;
-+    padding: 12px;
-+}
- 
--    font-size: 14px;
-+td {
-+    padding: 12px;
-+    border-bottom: 1px solid #ddd;
-+}
- 
-+tr:hover {
-+    background-color: #f5f5f5;
- }
- 
- button {
--
--    width: 100%;
--
-     margin-top: 25px;
--
--    padding: 12px;
--
--    background: #0d6efd;
--
-+    padding: 12px 30px;
-+    background-color: #1976d2;
-     color: white;
--
-     border: none;
--
-     border-radius: 5px;
--
-     cursor: pointer;
--
-+    float: right;
- }
- 
--.footer {
--
--    text-align: center;
--
--    margin-top: 25px;
--
--    color: gray;
--
--    font-size: 13px;
--
-+button:hover {
-+    background-color: #125ca1;
- }
-\ No newline at end of file
+h1 {
+    color: #1976d2;
+    text-align: center;
+}
+
+h2 {
+    color: #444;
+    margin-top: 30px;
+}
+
+h3 {
+    text-align: center;
+    color: #666;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #1976d2;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+button:hover {
+    background-color: #125ca1;
+}

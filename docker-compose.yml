@@ -1,0 +1,7 @@
+services:
+  healthconnect:
+    build: .
+    container_name: healthconnect-web
+    ports:
+      - "9090:80"
+    restart: unless-stopped

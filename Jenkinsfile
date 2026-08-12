@@ -21,5 +21,11 @@ pipeline {
                 bat 'docker-compose up -d'
             }
         }
+
+        stage('Health Check') {
+            steps {
+                bat 'curl -f http://localhost:9090'
+            }
+        }
     }
 }

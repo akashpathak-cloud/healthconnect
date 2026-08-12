@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const searchInput = document.querySelector(".search-box input");
-    const statusFilter = document.querySelector(".search-box select:nth-of-type(1)");
-    const modalityFilter = document.querySelector(".search-box select:nth-of-type(2)");
-    const searchButton = document.querySelector(".search-box button");
+    // ==============================
+    // STATUS UPDATE
+    // ==============================
 
-    const rows = document.querySelectorAll("tbody tr");
-
-    // Update John Doe status from localStorage
     const status = localStorage.getItem("studyStatus");
     const johnStatus = document.getElementById("john-status");
 
@@ -16,54 +12,118 @@ document.addEventListener("DOMContentLoaded", function () {
         johnStatus.className = "status reported-status";
     }
 
+
+    // ==============================
+    // SEARCH + FILTER
+    // ==============================
+
+    const searchInput = document.querySelector('input[type="text"]');
+    const selects = document.querySelectorAll("select");
+    const searchButton = Array.from(document.querySelectorAll("button"))
+        .find(button => button.textContent.trim() === "Search");
+
+    const statusFilter = selects[0];
+    const modalityFilter = selects[1];
+
+    const rows = document.querySelectorAll("tbody tr");
+
+
     function filterStudies() {
 
         const searchText = searchInput.value.toLowerCase().trim();
-        const selectedStatus = statusFilter.value;
-        const selectedModality = modalityFilter.value;
+
+        const selectedStatus = statusFilter.value
+            .toLowerCase()
+            .trim();
+
+        const selectedModality = modalityFilter.value
+            .toLowerCase()
+            .trim();
+
 
         rows.forEach(function (row) {
 
-            const patient = row.children[1].textContent.toLowerCase();
-            const mrn = row.children[2].textContent.toLowerCase();
-            const study = row.children[3].textContent.toLowerCase();
-            const modality = row.children[4].textContent.toLowerCase();
+            const cells = row.querySelectorAll("td");
+
+            if (cells.length < 5) {
+                return;
+            }
+
+            // Columns
+            const patient = cells[1].textContent.toLowerCase().trim();
+            const mrn = cells[2].textContent.toLowerCase().trim();
+            const study = cells[3].textContent.toLowerCase().trim();
+            const modality = cells[4].textContent.toLowerCase().trim();
 
             const statusElement = row.querySelector(".status");
+
             const rowStatus = statusElement
-                ? statusElement.textContent.trim().toLowerCase()
+                ? statusElement.textContent.toLowerCase().trim()
                 : "";
 
+
+            // Search can match Patient, MRN or Study
             const matchesSearch =
+                searchText === "" ||
                 patient.includes(searchText) ||
                 mrn.includes(searchText) ||
                 study.includes(searchText);
 
+
+            // Status filter
             const matchesStatus =
-                selectedStatus === "All Status" ||
-                rowStatus === selectedStatus.toLowerCase();
+                selectedStatus === "all status" ||
+                rowStatus === selectedStatus;
 
+
+            // Modality filter
             const matchesModality =
-                selectedModality === "All Modalities" ||
-                modality === selectedModality.toLowerCase();
+                selectedModality === "all modalities" ||
+                modality === selectedModality;
 
-            if (matchesSearch && matchesStatus && matchesModality) {
+
+            // Show / hide row
+            if (
+                matchesSearch &&
+                matchesStatus &&
+                matchesModality
+            ) {
                 row.style.display = "";
             } else {
                 row.style.display = "none";
             }
+
         });
     }
 
-    searchButton.addEventListener("click", filterStudies);
 
-    searchInput.addEventListener("keyup", function (event) {
-        if (event.key === "Enter") {
-            filterStudies();
-        }
-    });
+    // Search button
+    if (searchButton) {
+        searchButton.addEventListener("click", filterStudies);
+    }
 
-    statusFilter.addEventListener("change", filterStudies);
-    modalityFilter.addEventListener("change", filterStudies);
+
+    // Press Enter in search box
+    if (searchInput) {
+        searchInput.addEventListener("keyup", function (event) {
+
+            if (event.key === "Enter") {
+                filterStudies();
+            }
+
+        });
+    }
+
+
+    // Status dropdown
+    if (statusFilter) {
+        statusFilter.addEventListener("change", filterStudies);
+    }
+
+
+    // Modality dropdown
+    if (modalityFilter) {
+        modalityFilter.addEventListener("change", filterStudies);
+    }
 
 });

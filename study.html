@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>HealthConnect - Study Review</title>
 
     <link rel="stylesheet" href="study.css">
@@ -14,43 +13,38 @@
 
 <div class="app">
 
-    <!-- ================= HEADER ================= -->
-
+    <!-- HEADER -->
     <header class="topbar">
 
         <div class="brand">
-            <div class="brand-name">HealthConnect</div>
-            <div class="brand-subtitle">Clinical Imaging Portal</div>
+            <strong>HealthConnect</strong>
+            <span>Clinical Imaging Portal</span>
         </div>
 
         <div class="user-area">
             <span>Radiologist</span>
             <strong>Dr. Sharma</strong>
-            <button class="logout-btn">Logout</button>
+            <button onclick="window.location.href='index.html'">
+                Logout
+            </button>
         </div>
 
     </header>
 
 
-    <!-- ================= MAIN CONTENT ================= -->
-
+    <!-- MAIN CONTENT -->
     <main class="content">
 
-
-        <!-- Back to Worklist -->
-
-        <div class="back-link">
-            <a href="dashboard.html">← Back to Worklist</a>
-        </div>
+        <a href="dashboard.html" class="back-link">
+            ← Back to Worklist
+        </a>
 
 
-        <!-- ================= STUDY HEADER ================= -->
-
+        <!-- STUDY HEADER -->
         <section class="study-header">
 
-            <div class="study-title">
-
-                <div class="title-row">
+            <div>
+                <div class="study-title">
 
                     <h1>CT Brain</h1>
 
@@ -58,24 +52,27 @@
                         STAT
                     </span>
 
-                    <span class="status unread-status">
+                    <span class="status unread-status" id="studyStatus">
                         Unread
                     </span>
 
                 </div>
 
-                <p>Study Review &amp; Reporting</p>
-
+                <p>Study Review & Reporting</p>
             </div>
 
 
-            <div class="study-actions">
+            <div class="header-actions">
 
-                <button class="secondary-btn" id="saveDraftTop">
+                <button
+                    class="secondary-btn"
+                    onclick="saveDraft()">
                     Save Draft
                 </button>
 
-                <button class="primary-btn" id="submitReportTop">
+                <button
+                    class="primary-btn"
+                    onclick="submitReport()">
                     Submit Report
                 </button>
 
@@ -84,44 +81,43 @@
         </section>
 
 
+        <!-- MESSAGE -->
+        <div id="message" class="message"></div>
 
-        <!-- ================= PATIENT INFORMATION ================= -->
 
+        <!-- PATIENT INFORMATION -->
         <section class="panel">
 
-            <div class="panel-header">
-                <h2>Patient Information</h2>
-            </div>
-
+            <h2>Patient Information</h2>
 
             <div class="patient-grid">
 
-                <div class="info-item">
+                <div>
                     <span>Patient Name</span>
                     <strong>John Doe</strong>
                 </div>
 
-                <div class="info-item">
+                <div>
                     <span>MRN</span>
                     <strong>MRN10245</strong>
                 </div>
 
-                <div class="info-item">
+                <div>
                     <span>Age</span>
                     <strong>54 Years</strong>
                 </div>
 
-                <div class="info-item">
+                <div>
                     <span>Gender</span>
                     <strong>Male</strong>
                 </div>
 
-                <div class="info-item">
+                <div>
                     <span>Accession Number</span>
                     <strong>ACC20260812001</strong>
                 </div>
 
-                <div class="info-item">
+                <div>
                     <span>Study Date / Time</span>
                     <strong>12 Aug 2026, 09:32</strong>
                 </div>
@@ -131,42 +127,34 @@
         </section>
 
 
-
-        <!-- ================= STUDY + CLINICAL INFORMATION ================= -->
-
+        <!-- STUDY + CLINICAL INFORMATION -->
         <div class="two-column">
-
-
-            <!-- Study Information -->
 
             <section class="panel">
 
-                <div class="panel-header">
-                    <h2>Study Information</h2>
-                </div>
+                <h2>Study Information</h2>
 
-
-                <div class="detail-row">
+                <div class="info-row">
                     <span>Modality</span>
                     <strong>CT</strong>
                 </div>
 
-                <div class="detail-row">
+                <div class="info-row">
                     <span>Body Part</span>
                     <strong>Brain</strong>
                 </div>
 
-                <div class="detail-row">
+                <div class="info-row">
                     <span>Priority</span>
                     <strong class="stat-text">STAT</strong>
                 </div>
 
-                <div class="detail-row">
+                <div class="info-row">
                     <span>Referring Physician</span>
                     <strong>Dr. Mehta</strong>
                 </div>
 
-                <div class="detail-row">
+                <div class="info-row">
                     <span>Facility</span>
                     <strong>HealthConnect Medical Center</strong>
                 </div>
@@ -174,40 +162,29 @@
             </section>
 
 
-
-            <!-- Clinical Information -->
-
             <section class="panel">
 
-                <div class="panel-header">
-                    <h2>Clinical Information</h2>
+                <h2>Clinical Information</h2>
+
+                <div class="clinical-block">
+
+                    <span>Clinical History</span>
+
+                    <p>
+                        Patient presented with sudden onset headache,
+                        dizziness and nausea. CT Brain requested to rule
+                        out intracranial abnormality.
+                    </p>
+
                 </div>
 
+                <div class="clinical-block">
 
-                <div class="clinical-content">
+                    <span>Relevant History</span>
 
-                    <div class="clinical-item">
-
-                        <span>Clinical History</span>
-
-                        <p>
-                            Patient presented with sudden onset headache,
-                            dizziness and nausea. CT Brain requested to rule
-                            out intracranial abnormality.
-                        </p>
-
-                    </div>
-
-
-                    <div class="clinical-item">
-
-                        <span>Relevant History</span>
-
-                        <p>
-                            No previous imaging available for comparison.
-                        </p>
-
-                    </div>
+                    <p>
+                        No previous imaging available for comparison.
+                    </p>
 
                 </div>
 
@@ -216,210 +193,167 @@
         </div>
 
 
-
-        <!-- ================= RADIOLOGY REPORT ================= -->
-
+        <!-- RADIOLOGY REPORT -->
         <section class="panel report-panel">
 
-            <div class="panel-header report-header">
+            <div class="report-header">
 
-                <h2>Radiology Report</h2>
-
-                <span id="reportStatus" class="report-status draft">
-                    Draft
-                </span>
+                <div>
+                    <h2>Radiology Report</h2>
+                    <span id="reportStatus">Draft</span>
+                </div>
 
             </div>
 
 
-            <div class="report-body">
+            <div class="form-group">
+
+                <label for="findings">
+                    Findings
+                </label>
+
+                <textarea
+                    id="findings"
+                    placeholder="Describe the imaging findings..."></textarea>
+
+            </div>
 
 
-                <!-- Findings -->
+            <div class="form-group">
 
-                <div class="form-group">
+                <label for="impression">
+                    Impression
+                </label>
 
-                    <label for="findings">
-                        Findings
-                    </label>
-
-                    <textarea
-                        id="findings"
-                        rows="8"
-                        placeholder="Describe the imaging findings..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- Impression -->
-
-                <div class="form-group">
-
-                    <label for="impression">
-                        Impression
-                    </label>
-
-                    <textarea
-                        id="impression"
-                        rows="5"
-                        placeholder="Enter the final radiological impression..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- Report Actions -->
-
-                <div class="report-actions">
-
-                    <button
-                        class="secondary-btn"
-                        id="saveDraft">
-                        Save Draft
-                    </button>
-
-                    <button
-                        class="primary-btn"
-                        id="submitReport">
-                        Submit Report
-                    </button>
-
-                </div>
+                <textarea
+                    id="impression"
+                    placeholder="Enter the final radiological impression..."></textarea>
 
             </div>
 
         </section>
 
 
-
-        <!-- ================= AUDIT INFORMATION ================= -->
-
+        <!-- AUDIT INFORMATION -->
         <section class="panel audit-panel">
 
-            <div class="panel-header">
-                <h2>Study Activity</h2>
-            </div>
+            <h2>Study Audit</h2>
 
-            <div class="audit-content">
+            <div class="audit-grid">
 
-                <div class="audit-item">
-                    <span>Study Created</span>
-                    <strong>12 Aug 2026, 09:32</strong>
-                </div>
-
-                <div class="audit-item">
-                    <span>Assigned To</span>
+                <div>
+                    <span>Assigned Radiologist</span>
                     <strong>Dr. Sharma</strong>
                 </div>
 
-                <div class="audit-item">
-                    <span>Current Status</span>
+                <div>
+                    <span>Study Status</span>
                     <strong id="auditStatus">Unread</strong>
+                </div>
+
+                <div>
+                    <span>Last Updated</span>
+                    <strong id="lastUpdated">Not yet updated</strong>
                 </div>
 
             </div>
 
         </section>
-
 
     </main>
 
 </div>
 
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-    const findings = document.getElementById("findings");
-    const impression = document.getElementById("impression");
+function showMessage(text, type) {
 
-    const reportStatus = document.getElementById("reportStatus");
-    const auditStatus = document.getElementById("auditStatus");
+    const message = document.getElementById("message");
 
+    message.textContent = text;
 
-    /*
-     * SAVE DRAFT
-     */
+    message.className = "message " + type;
 
-    function saveReportDraft() {
+    setTimeout(function () {
 
-        reportStatus.textContent = "Draft Saved";
+        message.textContent = "";
+        message.className = "message";
 
-        reportStatus.className = "report-status draft";
-
-        auditStatus.textContent = "Draft";
-
-        alert("Radiology report saved as draft.");
-
-    }
+    }, 3000);
+}
 
 
-    /*
-     * SUBMIT REPORT
-     */
+function saveDraft() {
 
-    function submitReport() {
+    const findings = document.getElementById("findings").value;
+    const impression = document.getElementById("impression").value;
 
-        const findingsText = findings.value.trim();
+    if (!findings && !impression) {
 
-        const impressionText = impression.value.trim();
-
-
-        if (!findingsText || !impressionText) {
-
-            alert(
-                "Please complete both Findings and Impression before submitting."
-            );
-
-            return;
-
-        }
-
-
-        reportStatus.textContent = "Reported";
-
-        reportStatus.className = "report-status reported";
-
-        auditStatus.textContent = "Reported";
-
-
-        alert(
-            "Radiology report submitted successfully."
+        showMessage(
+            "Please enter findings or impression before saving.",
+            "warning"
         );
 
+        return;
+    }
+
+    document.getElementById("reportStatus").textContent = "Draft Saved";
+
+    document.getElementById("lastUpdated").textContent =
+        new Date().toLocaleString();
+
+    showMessage(
+        "Radiology report draft saved successfully.",
+        "success"
+    );
+}
+
+
+function submitReport() {
+
+    const findings = document.getElementById("findings").value;
+    const impression = document.getElementById("impression").value;
+
+    if (!findings || !impression) {
+
+        showMessage(
+            "Findings and Impression are required before submitting.",
+            "warning"
+        );
+
+        return;
     }
 
 
-    /*
-     * BUTTON EVENTS
-     */
+    document.getElementById("studyStatus").textContent = "Reported";
 
-    document
-        .getElementById("saveDraft")
-        .addEventListener("click", saveReportDraft);
+    document.getElementById("studyStatus").className =
+        "status reported-status";
 
 
-    document
-        .getElementById("submitReport")
-        .addEventListener("click", submitReport);
+    document.getElementById("auditStatus").textContent =
+        "Reported";
 
 
-    document
-        .getElementById("saveDraftTop")
-        .addEventListener("click", saveReportDraft);
+    document.getElementById("reportStatus").textContent =
+        "Final Report";
 
 
-    document
-        .getElementById("submitReportTop")
-        .addEventListener("click", submitReport);
+    document.getElementById("lastUpdated").textContent =
+        new Date().toLocaleString();
+
+
+    showMessage(
+        "Radiology report submitted successfully.",
+        "success"
+    );
+
+}
 
 </script>
 
-
 </body>
+
 </html>

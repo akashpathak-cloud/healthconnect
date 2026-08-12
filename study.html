@@ -4,280 +4,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Details - HealthConnect</title>
+
+    <title>HealthConnect - Study Review</title>
 
     <link rel="stylesheet" href="study.css">
 </head>
 
 <body>
 
-<header class="topbar">
-    <div>
-        <div class="brand">HealthConnect</div>
-        <div class="portal-name">Clinical Imaging Portal</div>
-    </div>
+<div class="app">
 
-    <div class="user-area">
-        <span>Radiologist</span>
-        <strong>Dr. Sharma</strong>
-        <button class="logout">Logout</button>
-    </div>
-</header>
+    <!-- ================= HEADER ================= -->
 
+    <header class="topbar">
 
-<main class="container">
-
-    <div class="breadcrumb">
-        <a href="dashboard.html">← Back to Worklist</a>
-    </div>
-
-
-    <section class="study-header">
-
-        <div>
-            <div class="study-title-row">
-                <h1>CT Brain</h1>
-                <span class="priority stat">STAT</span>
-                <span class="status unread">Unread</span>
-            </div>
-
-            <p class="subtitle">
-                Study Review & Reporting
-            </p>
+        <div class="brand">
+            <div class="brand-name">HealthConnect</div>
+            <div class="brand-subtitle">Clinical Imaging Portal</div>
         </div>
 
-        <div class="study-actions">
-            <button class="secondary-btn">Save Draft</button>
-            <button class="primary-btn">Submit Report</button>
+        <div class="user-area">
+            <span>Radiologist</span>
+            <strong>Dr. Sharma</strong>
+            <button class="logout-btn">Logout</button>
         </div>
 
-    </section>
+    </header>
 
 
-    <section class="patient-card">
+    <!-- ================= MAIN CONTENT ================= -->
 
-        <div class="card-title">
-            Patient Information
-        </div>
-
-        <div class="patient-grid">
-
-            <div>
-                <label>Patient Name</label>
-                <strong>John Doe</strong>
-            </div>
-
-            <div>
-                <label>MRN</label>
-                <strong>MRN10245</strong>
-            </div>
-
-            <div>
-                <label>Age</label>
-                <strong>54 Years</strong>
-            </div>
-
-            <div>
-                <label>Gender</label>
-                <strong>Male</strong>
-            </div>
-
-            <div>
-                <label>Accession Number</label>
-                <strong>ACC20260812001</strong>
-            </div>
-
-            <div>
-                <label>Study Date / Time</label>
-                <strong>12 Aug 2026, 09:32</strong>
-            </div>
-
-        </div>
-
-    </section>
+    <main class="content">
 
 
-    <section class="information-grid">
+        <!-- Back to Worklist -->
 
-        <div class="info-card">
-
-            <div class="card-title">
-                Study Information
-            </div>
-
-            <div class="info-row">
-                <span>Modality</span>
-                <strong>CT</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Body Part</span>
-                <strong>Brain</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Priority</span>
-                <strong class="text-stat">STAT</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Referring Physician</span>
-                <strong>Dr. Mehta</strong>
-            </div>
-
-            <div class="info-row">
-                <span>Facility</span>
-                <strong>HealthConnect Medical Center</strong>
-            </div>
-
+        <div class="back-link">
+            <a href="dashboard.html">← Back to Worklist</a>
         </div>
 
 
-        <div class="info-card">
+        <!-- ================= STUDY HEADER ================= -->
 
-            <div class="card-title">
-                Clinical Information
-            </div>
+        <section class="study-header">
 
-            <div class="clinical-history">
-                <label>Clinical History</label>
+            <div class="study-title">
 
-                <p>
-                    Patient presented with sudden onset headache,
-                    dizziness and nausea. CT Brain requested to
-                    rule out intracranial abnormality.
-                </p>
-            </div>
+                <div class="title-row">
 
-            <div class="clinical-history">
-                <label>Relevant History</label>
+                    <h1>CT Brain</h1>
 
-                <p>
-                    No previous imaging available for comparison.
-                </p>
-            </div>
+                    <span class="priority stat">
+                        STAT
+                    </span>
 
-        </div>
+                    <span class="status unread-status">
+                        Unread
+                    </span>
 
-    </section>
-
-
-    <section class="viewer-card">
-
-        <div class="viewer-header">
-
-            <div>
-                <h2>Image Viewer</h2>
-                <span>CT Brain • Series 1</span>
-            </div>
-
-            <div class="viewer-tools">
-                <button>Zoom +</button>
-                <button>Zoom −</button>
-                <button>Reset</button>
-            </div>
-
-        </div>
-
-
-        <div class="image-viewer">
-
-            <div class="image-placeholder">
-
-                <div class="scan-icon">
-                    CT
                 </div>
 
-                <h3>CT Image Viewer</h3>
+                <p>Study Review &amp; Reporting</p>
 
-                <p>
-                    DICOM image viewer placeholder
-                </p>
+            </div>
 
-                <span>
-                    Series 1 • Image 1 of 20
+
+            <div class="study-actions">
+
+                <button class="secondary-btn" id="saveDraftTop">
+                    Save Draft
+                </button>
+
+                <button class="primary-btn" id="submitReportTop">
+                    Submit Report
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PATIENT INFORMATION ================= -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2>Patient Information</h2>
+            </div>
+
+
+            <div class="patient-grid">
+
+                <div class="info-item">
+                    <span>Patient Name</span>
+                    <strong>John Doe</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>MRN</span>
+                    <strong>MRN10245</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Age</span>
+                    <strong>54 Years</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Gender</span>
+                    <strong>Male</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Accession Number</span>
+                    <strong>ACC20260812001</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Study Date / Time</span>
+                    <strong>12 Aug 2026, 09:32</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STUDY + CLINICAL INFORMATION ================= -->
+
+        <div class="two-column">
+
+
+            <!-- Study Information -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+                    <h2>Study Information</h2>
+                </div>
+
+
+                <div class="detail-row">
+                    <span>Modality</span>
+                    <strong>CT</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Body Part</span>
+                    <strong>Brain</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Priority</span>
+                    <strong class="stat-text">STAT</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Referring Physician</span>
+                    <strong>Dr. Mehta</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Facility</span>
+                    <strong>HealthConnect Medical Center</strong>
+                </div>
+
+            </section>
+
+
+
+            <!-- Clinical Information -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+                    <h2>Clinical Information</h2>
+                </div>
+
+
+                <div class="clinical-content">
+
+                    <div class="clinical-item">
+
+                        <span>Clinical History</span>
+
+                        <p>
+                            Patient presented with sudden onset headache,
+                            dizziness and nausea. CT Brain requested to rule
+                            out intracranial abnormality.
+                        </p>
+
+                    </div>
+
+
+                    <div class="clinical-item">
+
+                        <span>Relevant History</span>
+
+                        <p>
+                            No previous imaging available for comparison.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- ================= RADIOLOGY REPORT ================= -->
+
+        <section class="panel report-panel">
+
+            <div class="panel-header report-header">
+
+                <h2>Radiology Report</h2>
+
+                <span id="reportStatus" class="report-status draft">
+                    Draft
                 </span>
 
             </div>
 
-        </div>
+
+            <div class="report-body">
 
 
-        <div class="viewer-navigation">
+                <!-- Findings -->
 
-            <button class="secondary-btn">
-                Previous
-            </button>
+                <div class="form-group">
 
-            <span>
-                Image <strong>1</strong> / 20
-            </span>
+                    <label for="findings">
+                        Findings
+                    </label>
 
-            <button class="secondary-btn">
-                Next
-            </button>
+                    <textarea
+                        id="findings"
+                        rows="8"
+                        placeholder="Describe the imaging findings..."
+                    ></textarea>
 
-        </div>
-
-    </section>
+                </div>
 
 
-    <section class="report-card">
 
-        <div class="card-title">
-            Radiology Report
-        </div>
+                <!-- Impression -->
 
+                <div class="form-group">
 
-        <div class="report-section">
+                    <label for="impression">
+                        Impression
+                    </label>
 
-            <label for="findings">
-                Findings
-            </label>
+                    <textarea
+                        id="impression"
+                        rows="5"
+                        placeholder="Enter the final radiological impression..."
+                    ></textarea>
 
-            <textarea
-                id="findings"
-                placeholder="Enter radiological findings..."
-            ></textarea>
-
-        </div>
+                </div>
 
 
-        <div class="report-section">
 
-            <label for="impression">
-                Impression
-            </label>
+                <!-- Report Actions -->
 
-            <textarea
-                id="impression"
-                placeholder="Enter final impression..."
-            ></textarea>
+                <div class="report-actions">
 
-        </div>
+                    <button
+                        class="secondary-btn"
+                        id="saveDraft">
+                        Save Draft
+                    </button>
 
+                    <button
+                        class="primary-btn"
+                        id="submitReport">
+                        Submit Report
+                    </button>
 
-        <div class="report-footer">
+                </div>
 
-            <span class="draft-status">
-                Draft • Last saved just now
-            </span>
-
-            <div>
-                <button class="secondary-btn">
-                    Save Draft
-                </button>
-
-                <button class="primary-btn">
-                    Submit Report
-                </button>
             </div>
 
-        </div>
+        </section>
 
-    </section>
 
-</main>
+
+        <!-- ================= AUDIT INFORMATION ================= -->
+
+        <section class="panel audit-panel">
+
+            <div class="panel-header">
+                <h2>Study Activity</h2>
+            </div>
+
+            <div class="audit-content">
+
+                <div class="audit-item">
+                    <span>Study Created</span>
+                    <strong>12 Aug 2026, 09:32</strong>
+                </div>
+
+                <div class="audit-item">
+                    <span>Assigned To</span>
+                    <strong>Dr. Sharma</strong>
+                </div>
+
+                <div class="audit-item">
+                    <span>Current Status</span>
+                    <strong id="auditStatus">Unread</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const findings = document.getElementById("findings");
+    const impression = document.getElementById("impression");
+
+    const reportStatus = document.getElementById("reportStatus");
+    const auditStatus = document.getElementById("auditStatus");
+
+
+    /*
+     * SAVE DRAFT
+     */
+
+    function saveReportDraft() {
+
+        reportStatus.textContent = "Draft Saved";
+
+        reportStatus.className = "report-status draft";
+
+        auditStatus.textContent = "Draft";
+
+        alert("Radiology report saved as draft.");
+
+    }
+
+
+    /*
+     * SUBMIT REPORT
+     */
+
+    function submitReport() {
+
+        const findingsText = findings.value.trim();
+
+        const impressionText = impression.value.trim();
+
+
+        if (!findingsText || !impressionText) {
+
+            alert(
+                "Please complete both Findings and Impression before submitting."
+            );
+
+            return;
+
+        }
+
+
+        reportStatus.textContent = "Reported";
+
+        reportStatus.className = "report-status reported";
+
+        auditStatus.textContent = "Reported";
+
+
+        alert(
+            "Radiology report submitted successfully."
+        );
+
+    }
+
+
+    /*
+     * BUTTON EVENTS
+     */
+
+    document
+        .getElementById("saveDraft")
+        .addEventListener("click", saveReportDraft);
+
+
+    document
+        .getElementById("submitReport")
+        .addEventListener("click", submitReport);
+
+
+    document
+        .getElementById("saveDraftTop")
+        .addEventListener("click", saveReportDraft);
+
+
+    document
+        .getElementById("submitReportTop")
+        .addEventListener("click", submitReport);
+
+</script>
+
 
 </body>
 </html>

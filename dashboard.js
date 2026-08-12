@@ -1,15 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const studyStatus = localStorage.getItem("studyStatus");
+    const savedStatus = localStorage.getItem("studyStatus");
 
-    if (studyStatus) {
+    const johnStatus = document.getElementById("john-status");
 
-        const statusElements = document.querySelectorAll(".status");
+    if (savedStatus && johnStatus) {
+        johnStatus.textContent = savedStatus;
 
-        statusElements.forEach(function (element) {
-            element.textContent = studyStatus;
-        });
+        // Change the visual status class
+        johnStatus.classList.remove(
+            "unread-status",
+            "review-status",
+            "reported-status"
+        );
 
+        if (savedStatus === "Reported") {
+            johnStatus.classList.add("reported-status");
+        } else if (savedStatus === "In Review") {
+            johnStatus.classList.add("review-status");
+        } else {
+            johnStatus.classList.add("unread-status");
+        }
     }
 
 });

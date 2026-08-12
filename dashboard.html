@@ -4,50 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthConnect Dashboard</title>
-
+    <title>HealthConnect - Radiology Worklist</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
 
-<div class="dashboard">
+<div class="app">
 
-    <h1>HealthConnect Dashboard</h1>
+    <!-- Header -->
+    <header class="topbar">
+        <div>
+            <h1>HealthConnect</h1>
+            <span>Clinical Imaging Portal</span>
+        </div>
 
-    <h3>Welcome Dr. Sharma</h3>
+        <div class="user-info">
+            <span>Radiologist</span>
+            <strong>Dr. Sharma</strong>
+            <button onclick="location.href='index.html'">Logout</button>
+        </div>
+    </header>
 
-    <h2>Today's Worklist</h2>
 
-    <table>
+    <!-- Main Content -->
+    <main class="content">
 
-        <tr>
-            <th>Patient</th>
-            <th>Study</th>
-            <th>Status</th>
-        </tr>
+        <div class="page-header">
+            <div>
+                <h2>Radiology Worklist</h2>
+                <p>Review and manage assigned imaging studies</p>
+            </div>
 
-        <tr>
-            <td>John Doe</td>
-            <td>CT Brain</td>
-            <td>Pending</td>
-        </tr>
+            <div class="date">
+                12 August 2026
+            </div>
+        </div>
 
-        <tr>
-            <td>Rahul Sharma</td>
-            <td>MRI Knee</td>
-            <td>Completed</td>
-        </tr>
 
-        <tr>
-            <td>Maria Garcia</td>
-            <td>X-Ray Chest</td>
-            <td>In Review</td>
-        </tr>
+        <!-- Summary Cards -->
+        <section class="summary">
 
-    </table>
+            <div class="card">
+                <span>Total Studies</span>
+                <strong>12</strong>
+            </div>
 
-    <button>Logout</button>
+            <div class="card unread">
+                <span>Unread</span>
+                <strong>4</strong>
+            </div>
+
+            <div class="card review">
+                <span>In Review</span>
+                <strong>3</strong>
+            </div>
+
+            <div class="card reported">
+                <span>Reported</span>
+                <strong>5</strong>
+            </div>
+
+            <div class="card stat">
+                <span>STAT</span>
+                <strong>2</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Filters -->
+        <section class="filters">
+
+            <input
+                type="text"
+                placeholder="Search Patient / MRN / Accession Number"
+            >
+
+            <select>
+                <option>All Status</option>
+                <option>Unread</option>
+                <option>In Review</option>
+                <option>Reported</option>
+            </select>
+
+            <select>
+                <option>All Modalities</option>
+                <option>CT</option>
+                <option>MRI</option>
+                <option>X-Ray</option>
+                <option>Ultrasound</option>
+            </select>
+
+            <button>Search</button>
+
+        </section>
+
+
+        <!-- Worklist -->
+        <section class="worklist">
+
+            <div class="worklist-header">
+                <h3>Today's Studies</h3>
+                <span>12 studies</span>
+            </div>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Priority</th>
+                        <th>Patient</th>
+                        <th>MRN</th>
+                        <th>Study</th>
+                        <th>Modality</th>
+                        <th>Study Date/Time</th>
+                        <th>Status</th>
+                        <th>Radiologist</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><span class="priority stat-priority">STAT</span></td>
+                        <td>John Doe</td>
+                        <td>MRN10245</td>
+                        <td>CT Brain</td>
+                        <td>CT</td>
+                        <td>12 Aug 09:32</td>
+                        <td><span class="status unread-status">Unread</span></td>
+                        <td>Dr. Sharma</td>
+                        <td><button class="view-btn">Open</button></td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="priority urgent">Urgent</span></td>
+                        <td>Rahul Sharma</td>
+                        <td>MRN10246</td>
+                        <td>MRI Knee</td>
+                        <td>MRI</td>
+                        <td>12 Aug 08:45</td>
+                        <td><span class="status review-status">In Review</span></td>
+                        <td>Dr. Sharma</td>
+                        <td><button class="view-btn">Open</button></td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="priority normal">Normal</span></td>
+                        <td>Maria Garcia</td>
+                        <td>MRN10247</td>
+                        <td>Chest X-Ray</td>
+                        <td>X-Ray</td>
+                        <td>12 Aug 08:15</td>
+                        <td><span class="status reported-status">Reported</span></td>
+                        <td>Dr. Patel</td>
+                        <td><button class="view-btn">Open</button></td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="priority urgent">Urgent</span></td>
+                        <td>Priya Verma</td>
+                        <td>MRN10248</td>
+                        <td>CT Abdomen</td>
+                        <td>CT</td>
+                        <td>12 Aug 07:58</td>
+                        <td><span class="status unread-status">Unread</span></td>
+                        <td>Dr. Sharma</td>
+                        <td><button class="view-btn">Open</button></td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="priority normal">Normal</span></td>
+                        <td>Amit Kumar</td>
+                        <td>MRN10249</td>
+                        <td>MRI Brain</td>
+                        <td>MRI</td>
+                        <td>12 Aug 07:42</td>
+                        <td><span class="status review-status">In Review</span></td>
+                        <td>Dr. Patel</td>
+                        <td><button class="view-btn">Open</button></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
 
 </div>
 

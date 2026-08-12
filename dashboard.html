@@ -4,197 +4,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>HealthConnect - Radiology Worklist</title>
+
     <link rel="stylesheet" href="dashboard.css">
-    <script src="dashboard.js"></script>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
+
     <header class="topbar">
-        <div>
-            <h1>HealthConnect</h1>
+
+        <div class="brand">
+            <strong>HealthConnect</strong>
             <span>Clinical Imaging Portal</span>
         </div>
 
-        <div class="user-info">
+        <div class="user-area">
             <span>Radiologist</span>
             <strong>Dr. Sharma</strong>
-            <button onclick="location.href='index.html'">Logout</button>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
         </div>
+
     </header>
 
 
-    <!-- Main Content -->
+    <!-- ================= MAIN CONTENT ================= -->
+
     <main class="content">
 
-        <div class="page-header">
+        <!-- PAGE HEADER -->
+
+        <section class="page-header">
+
             <div>
-                <h2>Radiology Worklist</h2>
-                <p>Review and manage assigned imaging studies</p>
+                <h1>Radiology Worklist</h1>
+
+                <p>
+                    Review and manage assigned imaging studies
+                </p>
             </div>
 
             <div class="date">
                 12 August 2026
             </div>
-        </div>
+
+        </section>
 
 
-        <!-- Summary Cards -->
+        <!-- ================= SUMMARY CARDS ================= -->
+
         <section class="summary">
 
-            <div class="card">
+            <div class="summary-card total-card">
                 <span>Total Studies</span>
-                <strong>12</strong>
+                <strong id="totalCount">12</strong>
             </div>
 
-            <div class="card unread">
+            <div class="summary-card unread-card">
                 <span>Unread</span>
-                <strong>4</strong>
+                <strong id="unreadCount">4</strong>
             </div>
 
-            <div class="card review">
+            <div class="summary-card review-card">
                 <span>In Review</span>
-                <strong>3</strong>
+                <strong id="reviewCount">3</strong>
             </div>
 
-            <div class="card reported">
+            <div class="summary-card reported-card">
                 <span>Reported</span>
-                <strong>5</strong>
+                <strong id="reportedCount">5</strong>
             </div>
 
-            <div class="card stat">
+            <div class="summary-card stat-card">
                 <span>STAT</span>
-                <strong>2</strong>
+                <strong id="statCount">2</strong>
             </div>
 
         </section>
 
 
-        <!-- Filters -->
+        <!-- ================= SEARCH / FILTER ================= -->
+
         <section class="filters">
 
             <input
                 type="text"
-                placeholder="Search Patient / MRN / Accession Number"
+                id="searchInput"
+                placeholder="Search by patient name, MRN or study..."
             >
 
-            <select>
-                <option>All Status</option>
-                <option>Unread</option>
-                <option>In Review</option>
-                <option>Reported</option>
+            <select id="statusFilter">
+
+                <option value="all">
+                    All Status
+                </option>
+
+                <option value="Unread">
+                    Unread
+                </option>
+
+                <option value="In Review">
+                    In Review
+                </option>
+
+                <option value="Reported">
+                    Reported
+                </option>
+
             </select>
 
-            <select>
-                <option>All Modalities</option>
-                <option>CT</option>
-                <option>MRI</option>
-                <option>X-Ray</option>
-                <option>Ultrasound</option>
+
+            <select id="modalityFilter">
+
+                <option value="all">
+                    All Modalities
+                </option>
+
+                <option value="CT">
+                    CT
+                </option>
+
+                <option value="MRI">
+                    MRI
+                </option>
+
+                <option value="X-Ray">
+                    X-Ray
+                </option>
+
+                <option value="Ultrasound">
+                    Ultrasound
+                </option>
+
             </select>
 
-            <button>Search</button>
+
+            <button
+                class="primary-btn"
+                onclick="applyFilters()"
+            >
+                Search
+            </button>
 
         </section>
 
 
-        <!-- Worklist -->
+        <!-- ================= WORKLIST ================= -->
+
         <section class="worklist">
 
             <div class="worklist-header">
-                <h3>Today's Studies</h3>
-                <span>12 studies</span>
+
+                <h2>Today's Studies</h2>
+
+                <span id="studyCount">
+                    12 studies
+                </span>
+
             </div>
 
-            <table>
 
-                <thead>
-                    <tr>
-                        <th>Priority</th>
-                        <th>Patient</th>
-                        <th>MRN</th>
-                        <th>Study</th>
-                        <th>Modality</th>
-                        <th>Study Date/Time</th>
-                        <th>Status</th>
-                        <th>Radiologist</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <div class="table-container">
 
-                <tbody>
+                <table>
 
-                    <tr>
-    <td><span class="priority stat">STAT</span></td>
-    <td>John Doe</td>
-    <td>MRN10245</td>
-    <td>CT Brain</td>
-    <td>CT</td>
-    <td>12 Aug 09:32</td>
-    <td><span id="john-status" class="status unread-status">Unread</span></td>
-    <td>Dr. Sharma</td>
-    <td>
-        <button class="view-btn" onclick="window.location.href='study.html'">
-            Open
-        </button>
-    </td>
-</tr>
+                    <thead>
 
-                    <tr>
-                        <td><span class="priority urgent">Urgent</span></td>
-                        <td>Rahul Sharma</td>
-                        <td>MRN10246</td>
-                        <td>MRI Knee</td>
-                        <td>MRI</td>
-                        <td>12 Aug 08:45</td>
-                        <td><span class="status review-status">In Review</span></td>
-                        <td>Dr. Sharma</td>
-                        <td><a href="study.html" class="view-btn">Open</a></td>
-                    </tr>
+                        <tr>
 
-                    <tr>
-                        <td><span class="priority normal">Normal</span></td>
-                        <td>Maria Garcia</td>
-                        <td>MRN10247</td>
-                        <td>Chest X-Ray</td>
-                        <td>X-Ray</td>
-                        <td>12 Aug 08:15</td>
-                        <td><span class="status reported-status">Reported</span></td>
-                        <td>Dr. Patel</td>
-                        <td><a href="study.html" class="view-btn">Open</a></td>
-                    </tr>
+                            <th>PRIORITY</th>
+                            <th>PATIENT</th>
+                            <th>MRN</th>
+                            <th>STUDY</th>
+                            <th>MODALITY</th>
+                            <th>STUDY DATE/TIME</th>
+                            <th>STATUS</th>
+                            <th>RADIOLOGIST</th>
+                            <th>ACTION</th>
 
-                    <tr>
-                        <td><span class="priority urgent">Urgent</span></td>
-                        <td>Priya Verma</td>
-                        <td>MRN10248</td>
-                        <td>CT Abdomen</td>
-                        <td>CT</td>
-                        <td>12 Aug 07:58</td>
-                        <td><span class="status unread-status">Unread</span></td>
-                        <td>Dr. Sharma</td>
-                        <td><a href="study.html" class="view-btn">Open</a></td>
-                    </tr>
+                        </tr>
 
-                    <tr>
-                        <td><span class="priority normal">Normal</span></td>
-                        <td>Amit Kumar</td>
-                        <td>MRN10249</td>
-                        <td>MRI Brain</td>
-                        <td>MRI</td>
-                        <td>12 Aug 07:42</td>
-                        <td><span class="status review-status">In Review</span></td>
-                        <td>Dr. Patel</td>
-                        <td><a href="study.html" class="view-btn">Open</a></td>
-                    </tr>
+                    </thead>
 
-                </tbody>
+                    <tbody id="studyTableBody">
 
-            </table>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================= PAGINATION ================= -->
+
+            <div class="pagination">
+
+                <button
+                    id="previousBtn"
+                    onclick="previousPage()"
+                >
+                    Previous
+                </button>
+
+                <span id="pageInfo">
+                    Page 1 of 2
+                </span>
+
+                <button
+                    id="nextBtn"
+                    onclick="nextPage()"
+                >
+                    Next
+                </button>
+
+            </div>
 
         </section>
 
@@ -202,5 +232,674 @@
 
 </div>
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /*
+     * =========================================================
+     * STUDY DATA
+     * =========================================================
+     */
+
+    const studies = [
+
+        {
+            priority: "STAT",
+            patient: "John Doe",
+            mrn: "MRN10245",
+            study: "CT Brain",
+            modality: "CT",
+            date: "12 Aug 09:32",
+            status: "Unread",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Urgent",
+            patient: "Rahul Sharma",
+            mrn: "MRN10246",
+            study: "MRI Knee",
+            modality: "MRI",
+            date: "12 Aug 08:45",
+            status: "In Review",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Maria Garcia",
+            mrn: "MRN10247",
+            study: "Chest X-Ray",
+            modality: "X-Ray",
+            date: "12 Aug 08:15",
+            status: "Reported",
+            radiologist: "Dr. Patel"
+        },
+
+        {
+            priority: "Urgent",
+            patient: "Priya Verma",
+            mrn: "MRN10248",
+            study: "CT Abdomen",
+            modality: "CT",
+            date: "12 Aug 07:58",
+            status: "Unread",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Amit Kumar",
+            mrn: "MRN10249",
+            study: "MRI Brain",
+            modality: "MRI",
+            date: "12 Aug 07:42",
+            status: "In Review",
+            radiologist: "Dr. Patel"
+        },
+
+        {
+            priority: "STAT",
+            patient: "Sneha Kapoor",
+            mrn: "MRN10250",
+            study: "CT Chest",
+            modality: "CT",
+            date: "12 Aug 07:20",
+            status: "Reported",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Ravi Mehta",
+            mrn: "MRN10251",
+            study: "Ultrasound Abdomen",
+            modality: "Ultrasound",
+            date: "12 Aug 06:55",
+            status: "Reported",
+            radiologist: "Dr. Patel"
+        },
+
+        {
+            priority: "Urgent",
+            patient: "Neha Singh",
+            mrn: "MRN10252",
+            study: "MRI Spine",
+            modality: "MRI",
+            date: "12 Aug 06:30",
+            status: "In Review",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Vikram Shah",
+            mrn: "MRN10253",
+            study: "Chest X-Ray",
+            modality: "X-Ray",
+            date: "12 Aug 06:10",
+            status: "Reported",
+            radiologist: "Dr. Patel"
+        },
+
+        {
+            priority: "Urgent",
+            patient: "Anita Rao",
+            mrn: "MRN10254",
+            study: "CT Head",
+            modality: "CT",
+            date: "12 Aug 05:45",
+            status: "Unread",
+            radiologist: "Dr. Sharma"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Suresh Kumar",
+            mrn: "MRN10255",
+            study: "MRI Shoulder",
+            modality: "MRI",
+            date: "12 Aug 05:20",
+            status: "Reported",
+            radiologist: "Dr. Patel"
+        },
+
+        {
+            priority: "Normal",
+            patient: "Kavita Joshi",
+            mrn: "MRN10256",
+            study: "CT Abdomen",
+            modality: "CT",
+            date: "12 Aug 04:55",
+            status: "Unread",
+            radiologist: "Dr. Sharma"
+        }
+
+    ];
+
+
+    /*
+     * =========================================================
+     * PAGINATION
+     * =========================================================
+     */
+
+    const studiesPerPage = 10;
+
+    let currentPage = 1;
+
+    let filteredStudies = [...studies];
+
+
+    /*
+     * =========================================================
+     * STATUS FROM LOCAL STORAGE
+     * =========================================================
+     *
+     * study.html stores:
+     *
+     * localStorage.setItem("studyStatus", "Reported")
+     *
+     * We use that value for John Doe / MRN10245.
+     */
+
+    function loadSavedStatus() {
+
+        const savedStatus =
+            localStorage.getItem("studyStatus");
+
+        if (savedStatus) {
+
+            const johnStudy = studies.find(
+                study => study.mrn === "MRN10245"
+            );
+
+            if (johnStudy) {
+                johnStudy.status = savedStatus;
+            }
+
+        }
+
+    }
+
+
+    /*
+     * =========================================================
+     * STATUS COUNTS
+     * =========================================================
+     */
+
+    function updateSummaryCounts() {
+
+        const unread =
+            studies.filter(
+                study => study.status === "Unread"
+            ).length;
+
+        const inReview =
+            studies.filter(
+                study => study.status === "In Review"
+            ).length;
+
+        const reported =
+            studies.filter(
+                study => study.status === "Reported"
+            ).length;
+
+        const stat =
+            studies.filter(
+                study => study.priority === "STAT"
+            ).length;
+
+
+        document.getElementById("totalCount").textContent =
+            studies.length;
+
+        document.getElementById("unreadCount").textContent =
+            unread;
+
+        document.getElementById("reviewCount").textContent =
+            inReview;
+
+        document.getElementById("reportedCount").textContent =
+            reported;
+
+        document.getElementById("statCount").textContent =
+            stat;
+
+    }
+
+
+    /*
+     * =========================================================
+     * STATUS CLASS
+     * =========================================================
+     */
+
+    function getStatusClass(status) {
+
+        if (status === "Unread") {
+            return "unread-status";
+        }
+
+        if (status === "In Review") {
+            return "review-status";
+        }
+
+        if (status === "Reported") {
+            return "reported-status";
+        }
+
+        return "";
+
+    }
+
+
+    /*
+     * =========================================================
+     * PRIORITY CLASS
+     * =========================================================
+     */
+
+    function getPriorityClass(priority) {
+
+        if (priority === "STAT") {
+            return "stat";
+        }
+
+        if (priority === "Urgent") {
+            return "urgent";
+        }
+
+        return "normal";
+
+    }
+
+
+    /*
+     * =========================================================
+     * DISPLAY TABLE
+     * =========================================================
+     */
+
+    function renderStudies() {
+
+        const tableBody =
+            document.getElementById("studyTableBody");
+
+        tableBody.innerHTML = "";
+
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    filteredStudies.length /
+                    studiesPerPage
+                )
+            );
+
+
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+
+
+        const startIndex =
+            (currentPage - 1) *
+            studiesPerPage;
+
+        const endIndex =
+            startIndex +
+            studiesPerPage;
+
+
+        const pageStudies =
+            filteredStudies.slice(
+                startIndex,
+                endIndex
+            );
+
+
+        /*
+         * No results
+         */
+
+        if (pageStudies.length === 0) {
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+                <td colspan="9"
+                    style="text-align:center; padding:30px;">
+                    No studies found
+                </td>
+            `;
+
+            tableBody.appendChild(row);
+
+        }
+
+
+        /*
+         * Render studies
+         */
+
+        pageStudies.forEach(study => {
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>
+                    <span class="priority ${getPriorityClass(study.priority)}">
+                        ${study.priority}
+                    </span>
+                </td>
+
+                <td>
+                    ${study.patient}
+                </td>
+
+                <td>
+                    ${study.mrn}
+                </td>
+
+                <td>
+                    ${study.study}
+                </td>
+
+                <td>
+                    ${study.modality}
+                </td>
+
+                <td>
+                    ${study.date}
+                </td>
+
+                <td>
+                    <span class="status ${getStatusClass(study.status)}">
+                        ${study.status}
+                    </span>
+                </td>
+
+                <td>
+                    ${study.radiologist}
+                </td>
+
+                <td>
+
+                    <button
+                        class="view-btn"
+                        onclick="openStudy('${study.mrn}')"
+                    >
+                        Open
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(row);
+
+        });
+
+
+        /*
+         * Update pagination
+         */
+
+        document.getElementById("pageInfo").textContent =
+            `Page ${currentPage} of ${totalPages}`;
+
+
+        document.getElementById("previousBtn").disabled =
+            currentPage === 1;
+
+
+        document.getElementById("nextBtn").disabled =
+            currentPage === totalPages;
+
+
+        /*
+         * Study count
+         */
+
+        document.getElementById("studyCount").textContent =
+            `${filteredStudies.length} ${
+                filteredStudies.length === 1
+                    ? "study"
+                    : "studies"
+            }`;
+
+    }
+
+
+    /*
+     * =========================================================
+     * SEARCH + FILTER
+     * =========================================================
+     */
+
+    function applyFilters() {
+
+        const searchText =
+            document
+                .getElementById("searchInput")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const status =
+            document
+                .getElementById("statusFilter")
+                .value;
+
+
+        const modality =
+            document
+                .getElementById("modalityFilter")
+                .value;
+
+
+        filteredStudies =
+            studies.filter(study => {
+
+                /*
+                 * Search
+                 */
+
+                const matchesSearch =
+                    searchText === "" ||
+
+                    study.patient
+                        .toLowerCase()
+                        .includes(searchText) ||
+
+                    study.mrn
+                        .toLowerCase()
+                        .includes(searchText) ||
+
+                    study.study
+                        .toLowerCase()
+                        .includes(searchText);
+
+
+                /*
+                 * Status
+                 */
+
+                const matchesStatus =
+                    status === "all" ||
+                    study.status === status;
+
+
+                /*
+                 * Modality
+                 */
+
+                const matchesModality =
+                    modality === "all" ||
+                    study.modality === modality;
+
+
+                return (
+                    matchesSearch &&
+                    matchesStatus &&
+                    matchesModality
+                );
+
+            });
+
+
+        /*
+         * Always return to page 1
+         * after applying a filter.
+         */
+
+        currentPage = 1;
+
+        renderStudies();
+
+    }
+
+
+    /*
+     * =========================================================
+     * NEXT PAGE
+     * =========================================================
+     */
+
+    function nextPage() {
+
+        const totalPages =
+            Math.ceil(
+                filteredStudies.length /
+                studiesPerPage
+            );
+
+
+        if (currentPage < totalPages) {
+
+            currentPage++;
+
+            renderStudies();
+
+        }
+
+    }
+
+
+    /*
+     * =========================================================
+     * PREVIOUS PAGE
+     * =========================================================
+     */
+
+    function previousPage() {
+
+        if (currentPage > 1) {
+
+            currentPage--;
+
+            renderStudies();
+
+        }
+
+    }
+
+
+    /*
+     * =========================================================
+     * OPEN STUDY
+     * =========================================================
+     */
+
+    function openStudy(mrn) {
+
+        /*
+         * For now our study page represents
+         * the John Doe study.
+         */
+
+        if (mrn === "MRN10245") {
+
+            window.location.href =
+                "study.html";
+
+            return;
+
+        }
+
+
+        /*
+         * Other studies can later have
+         * their own study IDs/pages.
+         */
+
+        window.location.href =
+            "study.html";
+
+    }
+
+
+    /*
+     * =========================================================
+     * LOGOUT
+     * =========================================================
+     */
+
+    function logout() {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+
+    /*
+     * =========================================================
+     * SEARCH WITH ENTER KEY
+     * =========================================================
+     */
+
+    document
+        .getElementById("searchInput")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    applyFilters();
+
+                }
+
+            }
+        );
+
+
+    /*
+     * =========================================================
+     * INITIALIZE DASHBOARD
+     * =========================================================
+     */
+
+    loadSavedStatus();
+
+    updateSummaryCounts();
+
+    renderStudies();
+
+</script>
+
 </body>
+
 </html>

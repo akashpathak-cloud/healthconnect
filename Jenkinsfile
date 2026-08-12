@@ -15,8 +15,9 @@ pipeline {
             }
         }
 
-        stage('Start Application') {
+        stage('Deploy Test Environment') {
             steps {
+                bat 'docker-compose down'
                 bat 'docker-compose up -d'
             }
         }

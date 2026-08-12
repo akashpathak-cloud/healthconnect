@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Details - HealthConnect</title>
+
+    <link rel="stylesheet" href="study.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <div class="brand">HealthConnect</div>
+        <div class="portal-name">Clinical Imaging Portal</div>
+    </div>
+
+    <div class="user-area">
+        <span>Radiologist</span>
+        <strong>Dr. Sharma</strong>
+        <button class="logout">Logout</button>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="breadcrumb">
+        <a href="dashboard.html">← Back to Worklist</a>
+    </div>
+
+
+    <section class="study-header">
+
+        <div>
+            <div class="study-title-row">
+                <h1>CT Brain</h1>
+                <span class="priority stat">STAT</span>
+                <span class="status unread">Unread</span>
+            </div>
+
+            <p class="subtitle">
+                Study Review & Reporting
+            </p>
+        </div>
+
+        <div class="study-actions">
+            <button class="secondary-btn">Save Draft</button>
+            <button class="primary-btn">Submit Report</button>
+        </div>
+
+    </section>
+
+
+    <section class="patient-card">
+
+        <div class="card-title">
+            Patient Information
+        </div>
+
+        <div class="patient-grid">
+
+            <div>
+                <label>Patient Name</label>
+                <strong>John Doe</strong>
+            </div>
+
+            <div>
+                <label>MRN</label>
+                <strong>MRN10245</strong>
+            </div>
+
+            <div>
+                <label>Age</label>
+                <strong>54 Years</strong>
+            </div>
+
+            <div>
+                <label>Gender</label>
+                <strong>Male</strong>
+            </div>
+
+            <div>
+                <label>Accession Number</label>
+                <strong>ACC20260812001</strong>
+            </div>
+
+            <div>
+                <label>Study Date / Time</label>
+                <strong>12 Aug 2026, 09:32</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="information-grid">
+
+        <div class="info-card">
+
+            <div class="card-title">
+                Study Information
+            </div>
+
+            <div class="info-row">
+                <span>Modality</span>
+                <strong>CT</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Body Part</span>
+                <strong>Brain</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Priority</span>
+                <strong class="text-stat">STAT</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Referring Physician</span>
+                <strong>Dr. Mehta</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Facility</span>
+                <strong>HealthConnect Medical Center</strong>
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-title">
+                Clinical Information
+            </div>
+
+            <div class="clinical-history">
+                <label>Clinical History</label>
+
+                <p>
+                    Patient presented with sudden onset headache,
+                    dizziness and nausea. CT Brain requested to
+                    rule out intracranial abnormality.
+                </p>
+            </div>
+
+            <div class="clinical-history">
+                <label>Relevant History</label>
+
+                <p>
+                    No previous imaging available for comparison.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="viewer-card">
+
+        <div class="viewer-header">
+
+            <div>
+                <h2>Image Viewer</h2>
+                <span>CT Brain • Series 1</span>
+            </div>
+
+            <div class="viewer-tools">
+                <button>Zoom +</button>
+                <button>Zoom −</button>
+                <button>Reset</button>
+            </div>
+
+        </div>
+
+
+        <div class="image-viewer">
+
+            <div class="image-placeholder">
+
+                <div class="scan-icon">
+                    CT
+                </div>
+
+                <h3>CT Image Viewer</h3>
+
+                <p>
+                    DICOM image viewer placeholder
+                </p>
+
+                <span>
+                    Series 1 • Image 1 of 20
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="viewer-navigation">
+
+            <button class="secondary-btn">
+                Previous
+            </button>
+
+            <span>
+                Image <strong>1</strong> / 20
+            </span>
+
+            <button class="secondary-btn">
+                Next
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="report-card">
+
+        <div class="card-title">
+            Radiology Report
+        </div>
+
+
+        <div class="report-section">
+
+            <label for="findings">
+                Findings
+            </label>
+
+            <textarea
+                id="findings"
+                placeholder="Enter radiological findings..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="report-section">
+
+            <label for="impression">
+                Impression
+            </label>
+
+            <textarea
+                id="impression"
+                placeholder="Enter final impression..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="report-footer">
+
+            <span class="draft-status">
+                Draft • Last saved just now
+            </span>
+
+            <div>
+                <button class="secondary-btn">
+                    Save Draft
+                </button>
+
+                <button class="primary-btn">
+                    Submit Report
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

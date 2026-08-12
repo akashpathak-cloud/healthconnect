@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthConnect - Radiology Worklist</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js"></script>
 </head>
 
 <body>
@@ -128,16 +129,20 @@
                 <tbody>
 
                     <tr>
-                        <td><span class="priority stat-priority">STAT</span></td>
-                        <td>John Doe</td>
-                        <td>MRN10245</td>
-                        <td>CT Brain</td>
-                        <td>CT</td>
-                        <td>12 Aug 09:32</td>
-                        <td><span class="status unread-status">Unread</span></td>
-                        <td>Dr. Sharma</td>
-                        <td><a href="study.html" class="view-btn">Open</a></td>
-                    </tr>
+    <td><span class="priority stat">STAT</span></td>
+    <td>John Doe</td>
+    <td>MRN10245</td>
+    <td>CT Brain</td>
+    <td>CT</td>
+    <td>12 Aug 09:32</td>
+    <td><span class="status unread-status">Unread</span></td>
+    <td>Dr. Sharma</td>
+    <td>
+        <button class="view-btn" onclick="window.location.href='study.html'">
+            Open
+        </button>
+    </td>
+</tr>
 
                     <tr>
                         <td><span class="priority urgent">Urgent</span></td>

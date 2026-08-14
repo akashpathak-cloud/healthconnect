@@ -6,13 +6,14 @@ pipeline {
 
         stage('Test AWS CLI') {
             steps {
-                bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Amazon\\AWSCLIV2\\aws.exe" --version'
-            }
-        }
-
-        stage('Test AWS Identity') {
-            steps {
-                bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Amazon\\AWSCLIV2\\aws.exe" sts get-caller-identity'
+                withCredentials([usernamePassword(
+    credentialsId: 'healthconnect-aws',
+    usernameVariable: 'AWS_ACCESS_KEY_ID',
+    passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+)]) {
+    bat 'aws --version'
+    bat 'aws sts get-caller-identity'
+}
             }
         }
     }

@@ -1,7 +1,70 @@
 services:
-  healthconnect:
-    build: .
+
+  healthconnect-db:
+    image: postgres:16-alpine
+    container_name: healthconnect-db
+
+    environment:
+      POSTGRES_DB: healthconnect
+      POSTGRES_USER: healthconnect
+      POSTGRES_PASSWORD: healthconnect123
+
+    volumes:
+      - healthconnect-db-data:/var/lib/postgresql/data
+
+    ports:
+      - "5432:5432"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U healthconnect -d healthconnect"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+    restart: unless-stopped
+
+
+  healthconnect-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: healthconnect-api
+
+    environment:
+      PORT: 3000
+      DB_HOST: healthconnect-db
+      DB_PORT: 5432
+      DB_NAME: healthconnect
+      DB_USER: healthconnect
+      DB_PASSWORD: healthconnect123
+      SESSION_SECRET: healthconnect-dev-secret
+
+    depends_on:
+      healthconnect-db:
+        condition: service_healthy
+
+    ports:
+      - "3000:3000"
+
+    restart: unless-stopped
+
+
+  healthconnect-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
     container_name: healthconnect-web
+
+    depends_on:
+      - healthconnect-api
+
     ports:
       - "9090:80"
+
     restart: unless-stopped
+
+
+volumes:
+  healthconnect-db-data:

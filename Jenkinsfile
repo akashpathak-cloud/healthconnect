@@ -17,15 +17,15 @@ pipeline {
 
 stage('Test Docker') {
     steps {
-        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Docker\\Docker\\resources\\bin\\docker.exe" --version'
-        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Docker\\Docker\\resources\\bin\\docker.exe" info'
-        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Docker\\Docker\\resources\\bin\\docker-compose.exe" --version'
+        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" --version'
+        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" info'
+        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe" --version'
     }
 }
 
 stage('Build Docker Images') {
     steps {
-        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\Docker\\Docker\\resources\\bin\\docker-compose.exe" build'
+        bat '"C:\\Users\\patha\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe" build'
     }
 }
 
